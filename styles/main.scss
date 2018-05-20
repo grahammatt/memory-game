@@ -61,12 +61,15 @@ main {
 
   div {
     //1:1 ratio trick is from css-tricks.com/aspect-ratios-grid-items/
-    position     : relative;
-    width        : 100%;
-    min-width    : 50px;
-    min-height   : 50px;
-    border-radius: 10px;
-    background   : $accent-color;
+    position       : relative;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    width          : 100%;
+    min-width      : 50px;
+    min-height     : 50px;
+    border-radius  : 10px;
+    background     : $accent-color;
 
     &::before {
       content    : "";

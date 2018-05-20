@@ -26,6 +26,9 @@ main {
 
 .card-table div {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   min-width: 50px;
   min-height: 50px;
