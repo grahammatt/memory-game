@@ -1,0 +1,47 @@
+/*
+ the short form 'font:' declaration was cauing issues with cross-browser compatability so it isn't used
+ */
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+}
+
+.card-table {
+  flex-grow: 1;
+  margin: 20px;
+  max-height: 620px;
+  max-width: 620px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-auto-flow: column;
+  grid-gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #424242;
+}
+
+.card-table div {
+  position: relative;
+  width: 100%;
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 10px;
+  background: #03a9f4;
+}
+
+.card-table div::before {
+  content: "";
+  height: 0;
+  display: inline-block;
+  padding-top: 100%;
+  width: 1px;
+  position: relative;
+}
+
+.card-table div:hover {
+  cursor: pointer;
+}
