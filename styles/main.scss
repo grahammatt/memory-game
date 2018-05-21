@@ -37,7 +37,7 @@ main {
   display        : flex;
   justify-content: center;
   align-items    : center;
-  background     : $white-background;
+  background     : $background;
 }
 
 .card-table {
@@ -58,30 +58,39 @@ main {
   padding              : 10px;
   border-radius        : 10px;
   background           : $dark-background;
+}
 
-  div {
-    //1:1 ratio trick is from css-tricks.com/aspect-ratios-grid-items/
-    position       : relative;
-    display        : flex;
-    justify-content: center;
-    align-items    : center;
-    width          : 100%;
-    min-width      : 50px;
-    min-height     : 50px;
-    border-radius  : 10px;
-    background     : $accent-color;
+.card {
+  //1:1 ratio trick is from css-tricks.com/aspect-ratios-grid-items/
+  @include shadow(2);
+  position       : relative;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  width          : 100%;
+  min-width      : 50px;
+  min-height     : 50px;
+  border-radius  : 10px;
+  background     : $white-background;
 
-    &::before {
-      content    : "";
-      height     : 0;
-      display    : inline-block;
-      padding-top: 100%;
-      width      : 1px;
-      position   : relative;
-    }
-
-    &:hover {
-      cursor: pointer;
-    }
+  &::before {
+    content    : "";
+    height     : 0;
+    display    : inline-block;
+    padding-top: 100%;
+    width      : 1px;
+    position   : relative;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .fas {
+    font-size: 3em;
+  }
+}
+
+red {
+  background-color: red;
 }
