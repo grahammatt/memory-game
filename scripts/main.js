@@ -13,18 +13,20 @@ function getRandomInt(min, max) {
 
 function game(event) {
   let card = event.target;
-  if (card.classList.contains('pic')) {
+  if (card.classList.contains('card-table')) {
+    return 0;
+  } else if (card.classList.contains('pic')) {
     card = card.parentElement;
   }
   card.firstElementChild.style.display = 'initial';
   if (card.classList.contains('card') && card != last_click) {
     if (!last_click) {
       last_click = card;
-
       return 0;
     }
 
     if (card.firstElementChild.className == last_click.firstElementChild.className) {
+
       card.classList.add('match', 'animated', 'tada');
       last_click.classList.add('match', 'animated', 'tada');
       last_click = false;
