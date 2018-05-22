@@ -16,26 +16,31 @@ function game(event) {
   if (card.classList.contains('pic')) {
     card = card.parentElement;
   }
-  if (card.className === ('card') && card != last_click) {
+  card.firstElementChild.style.display = 'initial';
+  if (card.classList.contains('card') && card != last_click) {
     if (!last_click) {
       last_click = card;
+
       return 0;
     }
+
     if (card.firstElementChild.className == last_click.firstElementChild.className) {
-      card.classList.add('match');
-      last_click.classList.add('match');
+      card.classList.add('match', 'animated', 'tada');
+      last_click.classList.add('match', 'animated', 'tada');
       last_click = false;
     } else {
-      card.classList.add('mismatch');
-      last_click.classList.add('mismatch');
+      card.classList.add('mismatch', 'animated', 'wobble');
+      last_click.classList.add('mismatch', 'animated', 'wobble');
 
       CARD_TABLE.removeEventListener('click', game);
       setTimeout(function() {
-        card.classList.remove('mismatch');
-        last_click.classList.remove('mismatch');
+        card.firstElementChild.style.display = 'none';
+        last_click.firstElementChild.style.display = 'none';
+        card.classList.remove('mismatch', 'animated', 'wobble');
+        last_click.classList.remove('mismatch', 'animated', 'wobble');
         last_click = false;
         CARD_TABLE.addEventListener('click', game);
-      }, 2000);
+      }, 1000);
     }
   }
 

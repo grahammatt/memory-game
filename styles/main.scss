@@ -91,6 +91,7 @@ main {
     }
 
     i {
+      display  : none;
       font-size: 2.5em;
       color    : $color5;
     }
@@ -98,9 +99,11 @@ main {
 }
 
 .match {
+  z-index         : 3;
   background-color: $color2 !important;
 }
 
 .mismatch {
+  z-index         : 4;
   background-color: $color1 !important;
 }

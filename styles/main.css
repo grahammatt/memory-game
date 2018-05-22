@@ -51,14 +51,17 @@ main {
 }
 
 .card-table .card i {
+  display: none;
   font-size: 2.5em;
   color: #02171e;
 }
 
 .match {
+  z-index: 3;
   background-color: #06d660 !important;
 }
 
 .mismatch {
+  z-index: 4;
   background-color: #ef4747 !important;
 }
