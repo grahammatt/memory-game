@@ -6,7 +6,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f5f5f5;
+  background: #e0e0e0;
 }
 
 .card-table {
@@ -24,7 +24,8 @@ main {
   background: #424242;
 }
 
-.card-table div {
+.card-table .card {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   position: relative;
   display: flex;
   justify-content: center;
@@ -33,10 +34,10 @@ main {
   min-width: 50px;
   min-height: 50px;
   border-radius: 10px;
-  background: #03a9f4;
+  background: #f5f5f5;
 }
 
-.card-table div::before {
+.card-table .card::before {
   content: "";
   height: 0;
   display: inline-block;
@@ -45,6 +46,19 @@ main {
   position: relative;
 }
 
-.card-table div:hover {
+.card-table .card:hover {
   cursor: pointer;
+}
+
+.card-table .card i {
+  font-size: 2.5em;
+  color: #02171e;
+}
+
+.match {
+  background-color: #06d660 !important;
+}
+
+.mismatch {
+  background-color: #ef4747 !important;
 }

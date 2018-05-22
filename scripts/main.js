@@ -3,11 +3,43 @@
 const CARD_TABLE = document.getElementById("card-table");
 // TODO: Change CARD_AMOUNT to let and make the grid creation allow for larger games.
 const CARD_AMOUNT = 16;
-const ICONS = ['fas fa-basketball-ball', 'fas fa-bicycle', 'fas fa-bomb', 'fas fa-bolt', 'fas fa-frog', 'fas fa-football-ball', 'fas fa-beer', 'fas fa-dice'];
+let last_click = false;
+const ICONS = ['fas fa-basketball-ball pic', 'fas fa-bicycle pic', 'fas fa-bomb pic', 'fas fa-bolt pic', 'fas fa-frog pic', 'fas fa-football-ball pic', 'fas fa-beer pic', 'fas fa-dice pic'];
 
 function getRandomInt(min, max) {
   //from MDN Documentation
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function game(event) {
+  let card = event.target;
+  if (card.classList.contains('pic')) {
+    card = card.parentElement;
+  }
+  if (card.className === ('card') && card != last_click) {
+    if (!last_click) {
+      last_click = card;
+      return 0;
+    }
+    if (card.firstElementChild.className == last_click.firstElementChild.className) {
+      card.classList.add('match');
+      last_click.classList.add('match');
+      last_click = false;
+    } else {
+      card.classList.add('mismatch');
+      last_click.classList.add('mismatch');
+
+      CARD_TABLE.removeEventListener('click', game);
+      setTimeout(function() {
+        card.classList.remove('mismatch');
+        last_click.classList.remove('mismatch');
+        last_click = false;
+        CARD_TABLE.addEventListener('click', game);
+      }, 2000);
+    }
+  }
+
+
 }
 
 function makeGrid() {
@@ -21,9 +53,11 @@ function makeGrid() {
     let icon = document.createElement("i");
     icon.className = icons.splice(getRandomInt(0, i - 1), 1)[0];
     let card = document.createElement("div");
+    card.className = 'card';
     card.append(icon);
     fragment.append(card); //appends card to the fragment
   }
   CARD_TABLE.append(fragment); //add the cards to the grid layout
 }
 makeGrid();
+CARD_TABLE.addEventListener('click', game);

@@ -7,7 +7,12 @@ $primary-color: #ff5252;
 $accent-color: #03a9f4;
 $text-color-light: #fafafa;
 $text-color-dark: #6c6c6c;
-$hover-transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /*
+$hover-transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+$color1: rgba(239, 71, 71, 1);
+$color2: rgba(6, 214, 96, 1);
+$color3: rgba(193, 219, 227, 1);
+$color4: rgba(17, 138, 178, 1);
+$color5: rgba(2, 23, 30, 1); /*
  the short form 'font:' declaration was cauing issues with cross-browser compatability so it isn't used
  */
 //A mixin which helps you to add depth to elements according to the Google Material Design spec:
@@ -37,7 +42,7 @@ main {
   display        : flex;
   justify-content: center;
   align-items    : center;
-  background     : $white-background;
+  background     : $background;
 }
 
 .card-table {
@@ -59,7 +64,8 @@ main {
   border-radius        : 10px;
   background           : $dark-background;
 
-  div {
+  .card {
+    @include shadow(2);
     //1:1 ratio trick is from css-tricks.com/aspect-ratios-grid-items/
     position       : relative;
     display        : flex;
@@ -69,7 +75,7 @@ main {
     min-width      : 50px;
     min-height     : 50px;
     border-radius  : 10px;
-    background     : $accent-color;
+    background     : $white-background;
 
     &::before {
       content    : "";
@@ -83,5 +89,18 @@ main {
     &:hover {
       cursor: pointer;
     }
+
+    i {
+      font-size: 2.5em;
+      color    : $color5;
+    }
   }
+}
+
+.match {
+  background-color: $color2 !important;
+}
+
+.mismatch {
+  background-color: $color1 !important;
 }
