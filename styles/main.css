@@ -34,6 +34,41 @@ main {
   align-items: center;
 }
 
+.win-modal {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #f5f5f5;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  max-width: 100%;
+  z-index: 50;
+  height: 350px;
+  max-height: 100%;
+}
+
+.win-modal h1 {
+  text-align: center;
+  width: 100%;
+  font-weight: 300;
+}
+
+.win-modal button {
+  border: 0;
+  padding: 10px 15px;
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.win-modal button:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+}
+
 .card-table {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   flex-grow: 1;
