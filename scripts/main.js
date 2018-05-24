@@ -7,18 +7,23 @@ const MODAL = document.getElementById("win-modal");
 let last_click = false;
 let matches = 0;
 let turns = 0;
-const ICONS = ['fas fa-basketball-ball pic', 'fas fa-bicycle pic', 'fas fa-bomb pic', 'fas fa-bolt pic', 'fas fa-frog pic', 'fas fa-football-ball pic', 'fas fa-beer pic', 'fas fa-dice pic'];
+let icons = ['fas fa-basketball-ball pic', 'fas fa-bicycle pic', 'fas fa-bomb pic', 'fas fa-bolt pic', 'fas fa-frog pic', 'fas fa-football-ball pic', 'fas fa-beer pic', 'fas fa-dice pic'];
+//2 copies of the ICONS array sliced for the amount of cards the game will use
+icons = [...icons.slice(0, (CARD_AMOUNT / 2)), ...icons.slice(0, (CARD_AMOUNT / 2))];
 
-function getRandomInt(min, max) {
-  //from MDN Documentation
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 function matchCount() {
   if (++matches === CARD_AMOUNT / 2) {
     matches = 0;
     MODAL.style.display = 'flex';
 
+  }
+}
+// Shuffle function from http://stackoverflow.com/a/2450976
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // eslint-disable-line no-param-reassign
   }
 }
 
@@ -70,15 +75,12 @@ function game(event) {
 }
 
 function makeGrid() {
-  //TODO: remove all children from the table
-  //2 copies of the ICONS array sliced for the amount of cards the game will use
-  let icons = [...ICONS.slice(0, (CARD_AMOUNT / 2)), ...ICONS.slice(0, (CARD_AMOUNT / 2))];
-  // TODO: just make an array that concats itself
   //storing the cards in a document fragment to be pushed all at once instead of manipulating the dom in the loops
+  shuffleArray(icons);
   let fragment = document.createDocumentFragment();
-  for (let i = CARD_AMOUNT; i > 0; i--) {
+  for (let i of icons) {
     let icon = document.createElement("i");
-    icon.className = icons.splice(getRandomInt(0, i - 1), 1)[0];
+    icon.className = i;
     let card = document.createElement("div");
     card.className = 'card';
     card.append(icon);
@@ -86,6 +88,7 @@ function makeGrid() {
   }
   CARD_TABLE.append(fragment); //add the cards to the grid layout
 }
+
 document.getElementById('reset-game').addEventListener("click", function() {
   while (CARD_TABLE.firstChild) {
     CARD_TABLE.removeChild(CARD_TABLE.lastChild);
@@ -93,5 +96,6 @@ document.getElementById('reset-game').addEventListener("click", function() {
   MODAL.style.display = 'none';
   makeGrid();
 });
+
 makeGrid();
 CARD_TABLE.addEventListener('click', game);
