@@ -5,35 +5,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Concentration!</title>
+  <title>Memory Game</title>
+  <link rel="icon" href="images/favicon.ico">
+  <!-- stylesheets -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300" rel="stylesheet">
   <link rel="stylesheet" href="styles/normalize.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-
-  <link rel="icon"  href="images/favicon.ico">
 </head>
 
 <body>
+
   <header>
     <h1>Concentration</h1>
   </header>
+<!-- wrapper to contain game info. JS function will move #stats child to modal when game is won -->
   <div class="stats-wrap">
     <div id="stats" class="stats">
       <div class="turn-count">Turns:<span id="turns">0</span></div>
-      <span id="rank">
-      <i id="star1" class="fas fa-star"></i>
-      <i id="star2" class="fas fa-star"></i>
-      <i id="star3" class="fas fa-star"></i>
-        </span>
-        <div>Time: <span id="timer">00:00:00</span></div>
+      <div id="rank">
+        <!-- star id is used to update rank -->
+        <i id="star1" class="fas fa-star"></i>
+        <i id="star2" class="fas fa-star"></i>
+        <i id="star3" class="fas fa-star"></i>
+      </div>
+      <!-- easytimer.js displays here -->
+      <div>Time: <span id="timer">00:00:00</span></div>
+      <!-- button to reset the game board and stats -->
       <button id="reset-game">Play Again</button>
-
     </div>
   </div>
+
   <main>
     <div id="card-table" class="card-table">
+      <!-- Populated in JavaScript -->
     </div>
   </main>
 
@@ -41,12 +47,15 @@
     <a href="https://grahammatt.github.io"><i class="far fa-copyright"></i> 2018 Matthew Graham</a>
     <a href="https://github.com/grahammatt/memory-game" class="git-link">View on GitHub <i class="fab fa-github"></i></a>
   </footer>
+
   <div id="win-modal" class="win-modal">
     <h1>You won!</h1>
-
   </div>
+
+  <!-- scripts -->
   <script src="scripts/easytimer.min.js"></script>
   <script src="scripts/main.js"></script>
+
 </body>
 
 </html>
