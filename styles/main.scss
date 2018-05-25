@@ -64,6 +64,10 @@ header {
   }
 }
 
+.stats-wrap {
+  height: 30px;
+}
+
 .stats-wrap,
 main {
   flex           : 1;
@@ -74,9 +78,21 @@ main {
 
 .stats {
   display        : flex;
+  flex-wrap      : wrap;
   align-content  : center;
   justify-content: space-around;
   width          : 500px;
+}
+
+button {
+  border    : 0;
+  padding   : 10px 15px;
+  transition: $hover-transition;
+
+  &:hover {
+    @include shadow(1);
+    cursor: pointer;
+  }
 }
 
 .win-modal {
@@ -100,17 +116,6 @@ main {
     text-align : center;
     width      : 100%;
     font-weight: 300;
-  }
-
-  button {
-    border    : 0;
-    padding   : 10px 15px;
-    transition: $hover-transition;
-
-    &:hover {
-      @include shadow(1);
-      cursor: pointer;
-    }
   }
 }
 

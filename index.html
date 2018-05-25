@@ -22,13 +22,16 @@
     <h1>Concentration</h1>
   </header>
   <div class="stats-wrap">
-    <div class="stats">
+    <div id="stats" class="stats">
       <div class="turn-count">Turns:<span id="turns">0</span></div>
       <span id="rank">
       <i id="star1" class="fas fa-star"></i>
       <i id="star2" class="fas fa-star"></i>
       <i id="star3" class="fas fa-star"></i>
-    </span>
+        </span>
+        <div id="timer">00:00:00</div>
+      <button id="reset-game">Play Again</button>
+
     </div>
   </div>
   <main>
@@ -42,8 +45,9 @@
   </footer>
   <div id="win-modal" class="win-modal">
     <h1>You won!</h1>
-    <button id="reset-game">Play Again</button>
+
   </div>
+  <script src="scripts/easytimer.min.js"></script>
   <script src="scripts/main.js"></script>
 </body>
 

@@ -11,13 +11,16 @@ let turns = 0;
 let icons = ['fas fa-basketball-ball pic', 'fas fa-bicycle pic', 'fas fa-bomb pic', 'fas fa-bolt pic', 'fas fa-frog pic', 'fas fa-football-ball pic', 'fas fa-beer pic', 'fas fa-dice pic'];
 //2 copies of the ICONS array sliced for the amount of cards the game will use
 icons = [...icons.slice(0, (CARD_AMOUNT / 2)), ...icons.slice(0, (CARD_AMOUNT / 2))];
+const TIMER = document.getElementById('timer');
+var timer = new Timer();
 
 
 function matchCount() {
   if (++matches === CARD_AMOUNT / 2) {
     matches = 0;
     MODAL.style.display = 'flex';
-
+    MODAL.append(document.getElementById("stats"));
+    timer.stop();
   }
 }
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -40,6 +43,12 @@ function updateStars() {
 
 function game(event) {
   let card = event.target;
+  if (turns === 0) {
+    timer.start();
+    timer.addEventListener('secondsUpdated', function(e) {
+      TIMER.innerHTML = timer.getTimeValues().toString();
+    });
+  }
   if (card.classList.contains('pic')) {
     card = card.parentElement;
   }
@@ -110,10 +119,12 @@ function makeGrid() {
 }
 
 document.getElementById('reset-game').addEventListener("click", function() {
+  timer.reset();
   while (CARD_TABLE.firstChild) {
     CARD_TABLE.removeChild(CARD_TABLE.lastChild);
   }
   MODAL.style.display = 'none';
+  document.querySelector('.stats-wrap').append(document.getElementById("stats"));
   makeGrid();
 });
 

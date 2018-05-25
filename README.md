@@ -8,6 +8,7 @@ This is a work in progress
 - [Normalize](https://necolas.github.io/normalize.css/)
 - [Font Awesome](https://fontawesome.com/)
 - [Animate.css](https://daneden.github.io/animate.css/)
+- [easytimer.js](https://albert-gonzalez.github.io/easytimer.js/)
 
 ## License
 [This project is licensed under the MIT License](LICENSE)
