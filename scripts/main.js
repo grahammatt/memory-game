@@ -8,7 +8,6 @@ const CARD_AMOUNT = 16;
 
 let last_click = false;
 let matches;
-let mismatch;
 let turns;
 let timer = new Timer(); //easytimer.js
 
@@ -32,11 +31,12 @@ function shuffleArray(array) {
 
 function updateStars() {
   // decides if a star needs to be taken away from the rank
-  if (mismatch == 12) {
+  mismatch = turns - matches;
+  if (mismatch == 11) {
     document.getElementById("star1").className = "far fa-star"; //changes the fontawesome icon
-  } else if (mismatch == 9) {
+  } else if (mismatch == 8) {
     document.getElementById("star2").className = "far fa-star";
-  } else if (mismatch == 6) {
+  } else if (mismatch == 5) {
     document.getElementById("star3").className = "far fa-star";
   }
 }
@@ -89,7 +89,6 @@ function game(event) {
     card.classList.add('mismatch', 'animated', 'shake');
     last_click.classList.add('mismatch', 'animated', 'shake');
     //increase mismatches and check if stars should be updated
-    mismatch++;
     updateStars();
     // after the animation finishes hid the cards again
     setTimeout(function() {
@@ -110,9 +109,9 @@ function game(event) {
 
 function makeGrid() {
   //set values to the default
-  mismatch = 0;
   matches = 0;
   turns = 0;
+
   //storing the cards in a document fragment to be pushed all at once instead of manipulating the dom in the loops
   let icons = ['fas fa-basketball-ball pic', 'fas fa-bicycle pic', 'fas fa-bomb pic', 'fas fa-bolt pic', 'fas fa-frog pic', 'fas fa-football-ball pic', 'fas fa-beer pic', 'fas fa-dice pic'];
   //2 copies of the ICONS array sliced for the amount of cards the game will use
@@ -133,6 +132,7 @@ function makeGrid() {
 }
 
 document.getElementById('reset-game').addEventListener("click", function() {
+  timer.stop();
   TIMER.innerHTML = '00:00:00';
   document.getElementById('turns').innerHTML = 0;
   document.getElementById("star1").className = "fas fa-star";
