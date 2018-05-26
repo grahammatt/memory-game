@@ -6,7 +6,7 @@ const TIMER = document.getElementById('timer');
 // TODO: Change CARD_AMOUNT to let and make the grid creation allow for larger games.
 const CARD_AMOUNT = 16;
 
-let last_click = false;
+let last_click;
 let matches;
 let turns;
 let timer = new Timer(); //easytimer.js
@@ -111,11 +111,11 @@ function makeGrid() {
   //set values to the default
   matches = 0;
   turns = 0;
-
+  last_click = false;
   //storing the cards in a document fragment to be pushed all at once instead of manipulating the dom in the loops
   let icons = ['fas fa-basketball-ball pic', 'fas fa-bicycle pic', 'fas fa-bomb pic', 'fas fa-bolt pic', 'fas fa-frog pic', 'fas fa-football-ball pic', 'fas fa-beer pic', 'fas fa-dice pic'];
   //2 copies of the ICONS array sliced for the amount of cards the game will use
-  icons = [...icons.slice(0, (CARD_AMOUNT / 2)), ...icons.slice(0, (CARD_AMOUNT / 2))];
+  icons = [...icons, ...icons];
   shuffleArray(icons);
   //creating a document fragment to store the cards in until they are added to the DOM
   let fragment = document.createDocumentFragment();
