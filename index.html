@@ -20,23 +20,23 @@
 
   <header>
     <h1>Concentration</h1>
-  </header>
-<!-- wrapper to contain game info. JS function will move #stats child to modal when game is won -->
-  <div class="stats-wrap">
-    <div id="stats" class="stats">
-      <div class="turn-count">Turns:<span id="turns">0</span></div>
-      <div id="rank">
-        <!-- star id is used to update rank -->
-        <i id="star1" class="fas fa-star"></i>
-        <i id="star2" class="fas fa-star"></i>
-        <i id="star3" class="fas fa-star"></i>
+    <!-- wrapper to contain game info. JS function will move #stats child to modal when game is won -->
+    <div class="stats-wrap">
+      <div id="stats" class="stats">
+        <div id="rank" class="rank">
+          <!-- star id is used to update rank -->
+          <i id="star1" class="fas fa-star"></i>
+          <i id="star2" class="fas fa-star"></i>
+          <i id="star3" class="fas fa-star"></i>
+        </div>
+        <div class="turn-count">Turns: <span id="turns">0</span></div>
+        <!-- easytimer.js displays here -->
+        <div class="timer">Time: <span id="timer">00:00:00</span></div>
+        <!-- button to reset the game board and stats -->
+        <button id="reset-game">Play Again</button>
       </div>
-      <!-- easytimer.js displays here -->
-      <div>Time: <span id="timer">00:00:00</span></div>
-      <!-- button to reset the game board and stats -->
-      <button id="reset-game">Play Again</button>
     </div>
-  </div>
+  </header>
 
   <main>
     <div id="card-table" class="card-table">
