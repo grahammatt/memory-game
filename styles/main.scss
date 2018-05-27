@@ -12,7 +12,10 @@ $color1: rgba(239, 71, 71, 1);
 $color2: rgba(6, 214, 96, 1);
 $color3: rgba(193, 219, 227, 1);
 $color4: #118ab2;
-$color5: rgba(2, 23, 30, 1); /*
+$color5: rgba(2, 23, 30, 1);
+$breakpoint-large: 768px;
+$breakpoint-medium: 490px;
+$breakpoint-small: 400px; /*
  the short form 'font:' declaration was cauing issues with cross-browser compatability so it isn't used
  */
 //A mixin which helps you to add depth to elements according to the Google Material Design spec:
@@ -38,6 +41,12 @@ $color5: rgba(2, 23, 30, 1); /*
 }
 
 body {
+  @media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+    flex-wrap    : wrap;
+    max-height   : 100vh;
+    align-items  : center;
+    align-content: space-between;
+  }
   background    : $background;
   font-family   : $font-accent;
   color         : $text-color-dark2;
@@ -48,6 +57,11 @@ body {
 }
 
 header {
+  @media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+    order    : 1;
+    width    : 50%;
+    flex-grow: 1;
+  }
   display        : flex;
   flex-direction : column;
   justify-content: center;
@@ -56,37 +70,79 @@ header {
   margin         : 0;
 
   h1 {
+    @media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+      font-size: 2em;
+    }
+    @media screen and (max-width: $breakpoint-small) {
+      font-size: 2.4em;
+    }
     font-family: $font-accent;
     font-size  : 3.5em;
     font-weight: 300;
     padding    : 0;
     margin     : 0;
+    transition : 0.1s;
   }
 }
 
 .stats-wrap {
-  height: 35px;
-  margin: 4px 0;
+  min-height: 35px;
+  margin    : 4px 0;
+  max-width : 100%;
 
   .stats {
+    @media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+      align-content  : space-between;
+      flex-direction : column;
+      text-align     : center;
+      justify-content: center;
+      font-size      : 1.3em;
+
+      i {
+        font-size: 1.8em;
+      }
+
+      * {
+        margin-top: 12px;
+      }
+    }
+    flex-shrink    : 1;
     display        : flex;
     flex-wrap      : wrap;
     align-items    : center;
     justify-content: space-around;
-    width          : 500px;
+    width          : 650px;
+    max-width      : 80%;
 
     button {
-      border    : 0;
-      padding   : 8px 12px;
-      transition: $hover-transition;
-      background: $color4;
-      color     : $text-color-light;
+      @media screen and (max-width: $breakpoint-medium) {
+        margin: 10px 25%;
+      }
+      @media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+        padding: 12px 16px;
+        margin : 12px 0 0;
+      }
+      border-radius: 4px;
+      border       : 0;
+      padding      : 8px 12px;
+      transition   : $hover-transition;
+      background   : $color4;
+      color        : $text-color-light;
 
       &:hover {
         @include shadow(2);
         cursor: pointer;
       }
     }
+  }
+}
+
+main {
+  @media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+    order      : 3;
+    width      : 50%;
+    flex-grow  : 1;
+    flex-shrink: 1;
   }
 }
 
@@ -160,7 +216,21 @@ main {
 }
 
 .card-table {
+  @media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+    max-width    : 300px;
+    grid-gap     : 7px;
+    border-radius: 6px;
+    padding      : 6px;
+    font-size    : 2em;
+  }
+  @media screen and (max-width: $breakpoint-small) {
+    grid-gap     : 7px;
+    border-radius: 6px;
+    padding      : 6px;
+    font-size    : 2em;
+  }
   @include shadow(4);
+  font-size            : 2.5em;
   flex-grow            : 1;
   margin               : 5px 18px;
   max-height           : 620px;
@@ -206,8 +276,9 @@ main {
     }
 
     i {
+      @media screen and (max-width: $breakpoint-small) {}
       display  : none;
-      font-size: 2.5em;
+      font-size: inherit;
       color    : $color5;
     }
   }
@@ -224,6 +295,12 @@ main {
 }
 
 footer {
+  @media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+    order    : 2;
+    width    : 50%;
+    font-size: 12px;
+    padding  : 0 0 10px;
+  }
   display        : flex;
   align-items    : center;
   justify-content: space-around;
@@ -234,7 +311,7 @@ footer {
     text-decoration: none;
     color          : inherit;
     transition     : 0.15s;
-    margin         : 5px;
+    margin         : 5px 30px;
 
     &:hover {
       color: $primary-color;

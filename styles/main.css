@@ -11,6 +11,15 @@ body {
   flex-direction: column;
 }
 
+@media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+  body {
+    flex-wrap: wrap;
+    max-height: 100vh;
+    align-items: center;
+    align-content: space-between;
+  }
+}
+
 header {
   display: flex;
   flex-direction: column;
@@ -20,28 +29,69 @@ header {
   margin: 0;
 }
 
+@media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+  header {
+    order: 1;
+    width: 50%;
+    flex-grow: 1;
+  }
+}
+
 header h1 {
   font-family: "Roboto", sans-serif;
   font-size: 3.5em;
   font-weight: 300;
   padding: 0;
   margin: 0;
+  transition: 0.1s;
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+  header h1 {
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  header h1 {
+    font-size: 2.4em;
+  }
 }
 
 .stats-wrap {
-  height: 35px;
+  min-height: 35px;
   margin: 4px 0;
+  max-width: 100%;
 }
 
 .stats-wrap .stats {
+  flex-shrink: 1;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-  width: 500px;
+  width: 650px;
+  max-width: 80%;
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+  .stats-wrap .stats {
+    align-content: space-between;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    font-size: 1.3em;
+  }
+  .stats-wrap .stats i {
+    font-size: 1.8em;
+  }
+  .stats-wrap .stats * {
+    margin-top: 12px;
+  }
 }
 
 .stats-wrap .stats button {
+  border-radius: 4px;
   border: 0;
   padding: 8px 12px;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -49,9 +99,31 @@ header h1 {
   color: #fafafa;
 }
 
+@media screen and (max-width: 490px) {
+  .stats-wrap .stats button {
+    margin: 10px 25%;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+  .stats-wrap .stats button {
+    padding: 12px 16px;
+    margin: 12px 0 0;
+  }
+}
+
 .stats-wrap .stats button:hover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   cursor: pointer;
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+  main {
+    order: 3;
+    width: 50%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
 }
 
 .stats-wrap,
@@ -125,6 +197,7 @@ main {
 
 .card-table {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  font-size: 2.5em;
   flex-grow: 1;
   margin: 5px 18px;
   max-height: 620px;
@@ -137,6 +210,25 @@ main {
   padding: 12px;
   border-radius: 10px;
   background: #424242;
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+  .card-table {
+    max-width: 300px;
+    grid-gap: 7px;
+    border-radius: 6px;
+    padding: 6px;
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .card-table {
+    grid-gap: 7px;
+    border-radius: 6px;
+    padding: 6px;
+    font-size: 2em;
+  }
 }
 
 .card-table .card {
@@ -167,7 +259,7 @@ main {
 
 .card-table .card i {
   display: none;
-  font-size: 2.5em;
+  font-size: inherit;
   color: #02171e;
 }
 
@@ -189,11 +281,20 @@ footer {
   padding: 15px 0;
 }
 
+@media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+  footer {
+    order: 2;
+    width: 50%;
+    font-size: 12px;
+    padding: 0 0 10px;
+  }
+}
+
 footer a {
   text-decoration: none;
   color: inherit;
   transition: 0.15s;
-  margin: 5px;
+  margin: 5px 30px;
 }
 
 footer a:hover {
