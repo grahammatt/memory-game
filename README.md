@@ -1,5 +1,6 @@
 # Memory Game
 Single page memory game web app made during my participation in the Udacity Google Challenge Scholarship
+Try it out here: http://grahammatt.com/memory-game/
 
 # About
 This game was designed to be responsive across devices. The game board utilizes a grid layout while the rest of the UI uses flex. Landscape functionality was added for mobile devices.
