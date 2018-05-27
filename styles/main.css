@@ -5,7 +5,6 @@ body {
   background: #e0e0e0;
   font-family: "Roboto", sans-serif;
   color: #424242;
-  font-weight: 300;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -15,18 +14,14 @@ body {
   body {
     flex-wrap: wrap;
     max-height: 100vh;
-    align-items: center;
-    align-content: space-between;
   }
 }
 
 header {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 5px 0 0;
-  margin: 0;
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
@@ -62,6 +57,10 @@ header h1 {
   min-height: 35px;
   margin: 4px 0;
   max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
 }
 
 .stats-wrap .stats {
@@ -76,14 +75,15 @@ header h1 {
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
   .stats-wrap .stats {
-    align-content: space-between;
     flex-direction: column;
-    text-align: center;
-    justify-content: center;
     font-size: 1.3em;
   }
   .stats-wrap .stats i {
     font-size: 1.8em;
+  }
+  .stats-wrap .stats button {
+    padding: 12px 16px;
+    margin: 12px 0 0 !important;
   }
   .stats-wrap .stats * {
     margin-top: 12px;
@@ -105,34 +105,24 @@ header h1 {
   }
 }
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
-  .stats-wrap .stats button {
-    padding: 12px 16px;
-    margin: 12px 0 0;
-  }
-}
-
 .stats-wrap .stats button:hover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   cursor: pointer;
 }
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
-  main {
-    order: 3;
-    width: 50%;
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
-}
-
-.stats-wrap,
 main {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: space-around;
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+  main {
+    order: 3;
+    width: 50%;
+  }
 }
 
 .win-modal {
@@ -212,9 +202,8 @@ main {
   background: #424242;
 }
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+@media screen and (max-width: 400px) {
   .card-table {
-    max-width: 300px;
     grid-gap: 7px;
     border-radius: 6px;
     padding: 6px;
@@ -222,8 +211,9 @@ main {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
   .card-table {
+    max-width: 95%;
     grid-gap: 7px;
     border-radius: 6px;
     padding: 6px;
